@@ -3,6 +3,7 @@ package states;
 import flixel.FlxState;
 import flixel.text.FlxText;
 
+import hscript.Parser;
 import hscript.Interp;
 import sys.io.File;
 import sys.FileSystem;
@@ -25,7 +26,7 @@ class PlayState extends FlxState {
 
                 // 创建解释器并执行脚本
                 var interpreter = new Interp();
-                interpreter.run(scriptContent);
+                interpreter.execute(scriptContent);
             }
         }
     }
