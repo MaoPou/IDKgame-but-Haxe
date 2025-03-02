@@ -24,9 +24,10 @@ class PlayState extends FlxState {
                 // 读取文件内容
                 var scriptContent = File.getContent(filePath);
 
-                // 创建解释器并执行脚本
-                var interpreter = new Interp();
-                interpreter.execute(scriptContent);
+                var parser = new hscript.Parser();
+                var ast = parser.parseString(scriptContent);
+                var interp = new hscript.Interp();
+                interp.execute(ast);
             }
         }
     }
