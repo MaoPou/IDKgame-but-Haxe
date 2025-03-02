@@ -21,7 +21,7 @@ class PlayState extends FlxState {
         var scriptPath = "/storage/emulated/0/gongxiang/FNF-NovaFlare-Engine/scripts/script.hx";
         var libraryPath = "/storage/emulated/0/gongxiang/FNF-NovaFlare-Engine/scripts/library.txt";
         
-        if (FileSystem.exists(scriptPath)
+        if (FileSystem.exists(scriptPath){
             // 读取文件内容
             var scriptContent = Std.string(File.getContent(scriptPath));
             var parser = new hscript.Parser();
