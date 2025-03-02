@@ -4,8 +4,8 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="决战次世代" file="决战次世代" main="Main" version="0.0.1" company="MaoPou" />
-
+	<app title="决战次世代" file="juezhancishidai" main="Main" version="0.0.1" company="MaoPou" />
+	<certificate path="juezhan.keystore" password="114514" alias="myalias" alias-password="114514" if="android" unless="debug" />
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
 	<app preloader="flixel.system.FlxPreloader" />
