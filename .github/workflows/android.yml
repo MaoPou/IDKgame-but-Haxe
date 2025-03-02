@@ -52,8 +52,15 @@ jobs:
         with:
           haxe-version: 4.3.6
 
+      - name: Cache
+        uses: actions/cache@v3.4.3
+        with:
+          path: ~/export && ~/haxelib
+          key: android
+
       - name: Install Libraries
         run: |
+          haxelib setup ~/haxelib
           haxelib install hmm --quiet
           haxelib run hmm install --quiet
 
@@ -73,9 +80,10 @@ jobs:
           cert_alias_pass: nullfunni
 
       - name: Upload Artifact
-        if: ${{ success() }}
+        if: success()
         uses: actions/upload-artifact@main
         with:
           name: androidBuild-${{ matrix.storage-type }}
-          path: export/release/android/bin/app/build/outputs/apk/release/*.apk
+          path: export/**/*.apk  # 使用递归通配符
           if-no-files-found: error
+
