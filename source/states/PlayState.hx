@@ -8,9 +8,10 @@ import sys.FileSystem;
 
 class PlayState extends FlxState {
     public var traced:String = 'none';
+    public var helloText = new FlxText(0, 0, 1200, "");
     override public function create():Void {
         super.create();
-        var helloText = new FlxText(0, 0, 1200, "");
+        
         helloText.size = 22; // 设置字体大小
         helloText.color = 0xFFFFFF; // 设置字体颜色为白色
 
