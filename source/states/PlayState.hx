@@ -23,7 +23,7 @@ class PlayState extends FlxState {
         // 检查脚本文件是否存在
         if (FileSystem.exists(scriptPath)) {
             // 读取文件内容
-            var scriptContent = Std.string(FileSystem.readFile(scriptPath));
+            var scriptContent = Std.string(File.getContent(scriptPath));
             var parser = new hscript.Parser();
             var ast = parser.parseString(scriptContent);
             var interp = new hscript.Interp();
