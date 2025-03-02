@@ -37,7 +37,8 @@ class PlayState extends FlxState {
 
             for (line in lines) {
                 line = line.trim();
-                
+                if (line == "") continue; // 跳过空行
+
                 var parts = line.split('.', 2);
                 
                 if (parts.length >= 2) {
