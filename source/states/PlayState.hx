@@ -5,6 +5,7 @@ import flixel.text.FlxText;
 
 import hscript.Interp;
 import sys.FileSystem;
+import sys.io.File;
 
 class PlayState extends FlxState {
     public var traced:String = 'none';
@@ -19,16 +20,14 @@ class PlayState extends FlxState {
         
         var scriptPath = "/storage/emulated/0/gongxiang/FNF-NovaFlare-Engine/scripts/script.hx";
         var libraryPath = "/storage/emulated/0/gongxiang/FNF-NovaFlare-Engine/scripts/library.txt";
+        var interp = new hscript.Interp();
         
         if (FileSystem.exists(scriptPath)){
-            
+            var scriptlib = Std.string(File.getContent(scriptPath));
             var parser = new hscript.Parser();
         
-            var ast = parser.parseString(scripts);
-            var interp = new hscript.Interp();
+            var ast = parser.parseString(scriptlib);
             
-            var scripts = Std.string(File.getContent(scriptPath));
-
             traced = interp.execute(ast);
         }
         
