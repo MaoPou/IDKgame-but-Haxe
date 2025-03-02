@@ -5,6 +5,7 @@ import flixel.text.FlxText;
 
 import hscript.Interp;
 import sys.FileSystem;
+import sys.io.File;
 
 class PlayState extends FlxState {
     public var traced:String = 'none';
