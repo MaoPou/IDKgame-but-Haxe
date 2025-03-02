@@ -36,17 +36,15 @@ class PlayState extends FlxState {
             var lines = libraryAll.split("\n");
 
             for (line in lines) {
-                line = line.trim();
+                line = StringTools.trim(line);
                 if (line == "") continue; // 跳过空行
 
-                var parts = line.split('.', 2);
+                var parts = line.split(',');
                 
                 if (parts.length >= 2) {
                     var part1 = parts[0];
                     var part2 = parts[1];
-                    interp.variables.set(part1 + '.' + part2);
-                } else {
-                    interp.variables.set(part1);
+                    interp.variables.set(part1,part2);
                 }
             }
         }
