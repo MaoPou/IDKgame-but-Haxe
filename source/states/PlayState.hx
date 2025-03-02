@@ -16,7 +16,7 @@ class PlayState extends FlxState {
         var files = FileSystem.readDirectory(directory);
 
         for (file in files) {
-            if (StringTools.endsWith(".hx")) {
+            if (StringTools.endsWith(file ,".hx")) {
                 var filePath = directory + file;
                 trace("Loading script: " + filePath);
 
