@@ -61,9 +61,11 @@ jobs:
       - name: Cache
         uses: actions/cache@v3.4.3
         with:
-          path: /home/runner/export
-                /home/runner/haxelib
-          key: android
+          path: ~/haxelib
+            ~/.gradle
+            export/release/android/haxe
+            export/release/android/obj
+          key: cache-android-build
 
       - name: Install Libraries
         run: |
