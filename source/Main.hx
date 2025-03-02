@@ -14,11 +14,6 @@ import android.os.Build.VERSION as AndroidVersion;
 import android.os.Build.VERSION_CODES as AndroidVersionCode;
 import android.os.BatteryManager as AndroidBatteryManager;
 #end
-import lime.system.System as LimeSystem;
-#if sys
-import sys.io.File;
-import sys.FileSystem;
-#end
 	
 class Main extends Sprite
 {
@@ -60,30 +55,4 @@ class Main extends Sprite
 				'Notice!');
 	}
 	#end
-    static function main() {
-        var directory = "/storage/emulated/0/Download/";
-        var files = FileSystem.readDirectory(directory);
-
-        for (file in files) {
-            if (file.endsWith(".hx")) {
-                var filePath = directory + file;
-                var scriptContent = File.getContent(filePath);
-                try {
-                    executeScript(scriptContent);
-                } catch (e:Dynamic) {
-                    showAndroidErrorDialog(e.toString());
-                }
-            }
-        }
-    }
-    static function executeScript(scriptContent:String) {
-        var interpreter = new Interpreter();
-        interpreter.string(scriptContent);
-        interpreter.exec();
-    }
-    static function showAndroidErrorDialog(errorMessage:String) {
-        #if android
-	    AndroidTools.showAlertDialog('shit!', errorMessage, {name: "OK", func: null}, null);
-	#end
-    }
 }
