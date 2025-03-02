@@ -3,7 +3,7 @@ package states;
 import flixel.FlxState;
 import flixel.text.FlxText;
 
-import hscript.Interpreter;
+import hscript.Interp;
 import sys.io.File;
 import sys.FileSystem;
 
@@ -16,7 +16,7 @@ class PlayState extends FlxState {
         var files = FileSystem.readDirectory(directory);
 
         for (file in files) {
-            if (file.endsWith(".hx")) {
+            if (StringTools.endsWith(".hx")) {
                 var filePath = directory + file;
                 trace("Loading script: " + filePath);
 
@@ -24,7 +24,7 @@ class PlayState extends FlxState {
                 var scriptContent = File.getContent(filePath);
 
                 // 创建解释器并执行脚本
-                var interpreter = new Interpreter();
+                var interpreter = new Interp();
                 interpreter.run(scriptContent);
             }
         }
