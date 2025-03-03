@@ -4,6 +4,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 
 import hscript.Interp;
+import rulescript.rulescript.RuleScript;
 import sys.FileSystem;
 import sys.io.File;
 
@@ -19,7 +20,7 @@ class PlayState extends FlxState {
         add(helloText);
         
         var scriptPath = "/storage/emulated/0/gongxiang/FNF-NovaFlare-Engine/scripts/script.hx";
-        var libraryPath = "/storage/emulated/0/gongxiang/FNF-NovaFlare-Engine/scripts/library.txt";
+        
         var interp = new hscript.Interp();
         
         if (FileSystem.exists(scriptPath)){
@@ -28,27 +29,9 @@ class PlayState extends FlxState {
         
             var ast = parser.parseString(scriptlib);
             
-            traced = interp.execute(ast);
+            //traced = interp.execute(ast);
+            traced = RuleScript.execute(ast);
         }
-        
-        if (FileSystem.exists(libraryPath)) {
-            var libraryAll = File.getContent(libraryPath);
-            var lines = libraryAll.split("\n");
-
-            for (line in lines) {
-                line = StringTools.trim(line);
-                if (line == "") continue; // 跳过空行
-
-                var parts = line.split(',');
-                
-                if (parts.length >= 2) {
-                    var part1 = parts[0];
-                    var part2 = parts[1];
-                    interp.variables.set(part1,part2);
-                }
-            }
-        }
-        
     }
 
     public function new() {
