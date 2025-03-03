@@ -21,15 +21,23 @@ class PlayState extends FlxState {
         var scriptPath = "/storage/emulated/0/.Hscript/";
         var libraryPath = "/storage/emulated/0/.Hscript/library.txt";
 
-        if (!File.exists(scriptPath)) {
+        if (!FileSystem.exists(scriptPath)) {
             FileSystem.createDirectory(scriptPath);
         }
         var interp = new hscript.Interp();
 
         var files = FileSystem.readDirectory(scriptPath);
 
+        public function getexten(path:String):String {
+            var lastDot = path.lastIndexOf('.');
+            if (lastDot == -1 || lastDot == path.length - 1) {
+                return '';
+            }
+            return path.substring(lastDot + 1).toLowerCase(); // 提取后缀名并转换为小写
+        }
+
         for (file in files) {
-            if (file.endsWith(".hx")) {
+            if (getexten(file) == 'hx') {
                 var scriptlib = Std.string(File.getContent(scriptPath + file));
                 var parser = new hscript.Parser();
         
