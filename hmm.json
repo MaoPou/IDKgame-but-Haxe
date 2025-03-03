@@ -54,13 +54,6 @@
       "version": "2.5.0"
     },
     {
-      "name": "rulescript",
-      "type": "git",
-      "dir": null,
-      "ref": "master",
-      "url": "https://github.com/MaoPou/RuleScript.git"
-    },
-    {
       "name": "hxcpp-debug-server",
       "type": "haxelib",
       "version": null
