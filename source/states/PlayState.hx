@@ -29,14 +29,6 @@ class PlayState extends FlxState {
 
         var files = FileSystem.readDirectory(scriptPath);
 
-        public function getexten(path:String):String {
-            var lastDot = path.lastIndexOf('.');
-            if (lastDot == -1 || lastDot == path.length - 1) {
-                return '';
-            }
-            return path.substring(lastDot + 1).toLowerCase(); // 提取后缀名并转换为小写
-        }
-
         for (file in files) {
             if (getexten(file) == 'hx') {
                 var scriptlib = Std.string(File.getContent(scriptPath + file));
@@ -64,6 +56,14 @@ class PlayState extends FlxState {
                 }
             }
         }
+    }
+
+    public function getexten(path:String):String {
+        var lastDot = path.lastIndexOf('.');
+        if (lastDot == -1 || lastDot == path.length - 1) {
+            return '';
+        }
+        return path.substring(lastDot + 1).toLowerCase(); // 提取后缀名并转换为小写
     }
 
     public function new() {
