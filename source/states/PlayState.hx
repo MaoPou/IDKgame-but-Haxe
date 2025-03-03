@@ -34,16 +34,18 @@ class PlayState extends FlxState {
                 scriptlib.getParser(HxParser).allowAll();
                 traced = scriptlib.tryExecute(ast);
             }
+        }
         
             //var interp = new hscript.Interp();
         
-            /*var scriptlib = Std.string(File.getContent(scriptPath));
+          /*
+        var scriptlib = Std.string(File.getContent(scriptPath));
             var parser = new hscript.Parser();
         
             var ast = parser.parseString(scriptlib);
             
             traced = interp.execute(ast);
-            */
+          */
     }
 
     public function new() {
