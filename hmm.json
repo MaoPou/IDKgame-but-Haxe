@@ -49,6 +49,11 @@
       "url": "https://github.com/beihu235/hxvlc-1.8.1"
     },
     {
+      "name": "hscript",
+      "type": "haxelib",
+      "version": "2.5.0"
+    },
+    {
       "name": "rulescript",
       "type": "haxelib",
       "version": null
