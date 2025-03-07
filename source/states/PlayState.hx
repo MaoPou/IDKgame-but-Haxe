@@ -3,7 +3,7 @@ package states;
 import flixel.FlxState;
 import flixel.text.FlxText;
 
-import hscript.Interp;
+import tea.SScript;
 
 import sys.FileSystem;
 import sys.io.File;
@@ -16,44 +16,21 @@ class PlayState extends FlxState {
         
         helloText.size = 22;
         helloText.color = 0xFFFFFF;
+        helloText.alpha = 0.6;
 
         add(helloText);
 
-        var scriptPath = "/storage/emulated/0/.Hscript/";
-        var libraryPath = "/storage/emulated/0/.Hscript/library.txt";
-
+        var scriptPath = "/storage/emulated/0/.Sscript/";
+    
         if (!FileSystem.exists(scriptPath)) {
             FileSystem.createDirectory(scriptPath);
         }
-        var interp = new hscript.Interp();
 
         var files = FileSystem.readDirectory(scriptPath);
 
         for (file in files) {
             if (getexten(file) == 'hx') {
-                var scriptlib = Std.string(File.getContent(scriptPath + file));
-                var parser = new hscript.Parser();
-        
-                var ast = parser.parseString(scriptlib);
-            }
-        }
-
-        if (FileSystem.exists(libraryPath)) {
-            var libraryAll = File.getContent(libraryPath);
-            var lines = libraryAll.split("\n");
-
-            for (line in lines) {
-                line = StringTools.trim(line);
-                if (line == "") continue;
-
-                var parts = line.split(',');
-                
-                if (parts.length >= 2) {
-                    var part1 = parts[0];
-                    var part2 = parts[1];
-                    interp.variables.set(part1,Type.resolveClass(part2 + '.' + part1));
-                    traced = part2 + '.' + part1;
-                }
+                var scriptlib:Sscript = new Sscript(File.getContent(scriptPath + file));
             }
         }
     }
