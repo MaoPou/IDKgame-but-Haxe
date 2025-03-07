@@ -30,7 +30,7 @@ class PlayState extends FlxState {
 
         for (file in files) {
             if (getexten(file) == 'hx') {
-                var scriptlib:Sscript = new Sscript(File.getContent(scriptPath + file));
+                var scriptlib:SScript = new SScript(File.getContent(scriptPath + file));
             }
         }
     }
